@@ -59,3 +59,4 @@ fine, since this is a fully static site with no backend).
   full-screen without browser chrome next time. The `DownloadSection`
   component detects the visitor's OS and highlights the right
   instructions automatically.
+# digital-garage-website
