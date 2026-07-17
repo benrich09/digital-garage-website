@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-asphalt: #1c1917;
+  --color-asphalt-light: #2a2724;
+  --color-steel: #78716c;
+  --color-chalk: #fafaf9;
+  --color-brand: #f97316;
+  --color-brand-dark: #c2410c;
+  --color-hazard: #fbbf24;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-asphalt);
+  color: var(--color-chalk);
+  font-family: var(--font-body);
+}
+
+/* Diagonal hazard-stripe divider — the page's signature motif, echoing
+   reflective garage/workshop caution tape rather than a generic
+   gradient rule. */
+.hazard-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-hazard),
+    var(--color-hazard) 14px,
+    var(--color-asphalt) 14px,
+    var(--color-asphalt) 28px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
