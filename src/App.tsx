@@ -9,6 +9,7 @@ function App() {
     <div className="min-h-screen">
       <Hero />
 
+      <div id="showcase" />
       <AppShowcase
         eyebrow="For car owners"
         title="Stuck on the road? Help finds you."

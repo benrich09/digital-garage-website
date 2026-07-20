@@ -39,10 +39,10 @@ export function Hero() {
             Download for Android
           </a>
           <a
-            href="#download"
+            href="#showcase"
             className="rounded-full border border-white/20 px-7 py-3 font-medium text-chalk transition hover:border-white/40"
           >
-            Add to iPhone Home Screen
+            See what it does
           </a>
         </div>
       </div>

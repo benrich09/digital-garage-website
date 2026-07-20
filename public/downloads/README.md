@@ -1,10 +1,24 @@
-Drop your built APK files here with these exact names (matching the
-links in DownloadSection.tsx):
+Build each app split by CPU architecture (smaller downloads than one
+"fat" APK with every architecture bundled in):
 
-- digital-garage-car-owner.apk
-- digital-garage-provider.apk
+  flutter build apk --release --split-per-abi
 
-Build them with:
+Output lands in build/app/outputs/flutter-apk/ as three files:
+  app-arm64-v8a-release.apk    (recommended — covers ~all modern phones)
+  app-armeabi-v7a-release.apk  (older/budget devices)
+  app-x86_64-release.apk       (rare — mostly emulators)
+
+Copy all three into the matching folder here, with those exact
+filenames (matching the links in DownloadSection.tsx):
+
+  public/downloads/car-owner/   <- from the digital_garage_car_owner build
+  public/downloads/provider/    <- from the digital_garage_provider build
+
+If you'd rather ship one single APK covering every architecture instead
+(larger download, simpler to manage), run:
+
   flutter build apk --release
-from each app's project root — the file lands at
-build/app/outputs/flutter-apk/app-release.apk, rename/copy it here.
+
+and copy that one file into each folder three times under all three
+filenames above — or just tell me and I'll simplify DownloadSection.tsx
+back down to one link per app instead of three.
