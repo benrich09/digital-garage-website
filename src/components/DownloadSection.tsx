@@ -30,15 +30,19 @@ interface AppLinksProps {
   name: string;
   tagline: string;
   folder: "car-owner" | "provider";
+  audience: string;
 }
 
-function AppLinks({ name, tagline, folder }: AppLinksProps) {
+function AppLinks({ name, tagline, folder, audience }: AppLinksProps) {
   const recommended = variants.find((v) => v.recommended)!;
   const others = variants.filter((v) => !v.recommended);
 
   return (
     <div className="rounded-2xl border border-white/10 bg-asphalt-light p-6">
-      <p className="font-display text-lg font-bold">{name}</p>
+      <p className="font-mono text-[11px] uppercase tracking-wider text-hazard">
+        {audience}
+      </p>
+      <p className="mt-1 font-display text-lg font-bold">{name}</p>
       <p className="mt-1 text-sm text-steel">{tagline}</p>
 
       <a
@@ -79,38 +83,64 @@ export function DownloadSection() {
     <section id="download" className="relative border-t border-white/10 bg-asphalt-light/30 py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-hazard">Get on the road</p>
-          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight">Install both apps</h2>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-hazard">
+            Get on the road
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight">
+            Install the right app
+          </h2>
           <p className="mx-auto mt-4 max-w-lg text-steel">
-            Car owners and garages each get their own app. Available for Android —
-            download the APK directly, no Play Store needed.
+            Car owners and service providers each get a dedicated app. Available
+            for Android — download the APK directly, no Play Store required.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           <AppLinks
             name="Digital Garage — Car Owner"
-            tagline="Book a garage, request a mechanic, track them in real time."
+            tagline="Request a mechanic, book a garage, track live, manage vehicles, and keep history & receipts."
             folder="car-owner"
+            audience="Car owners"
           />
           <AppLinks
             name="Digital Garage — Provider"
-            tagline="For garage owners and mechanics: manage requests and jobs."
+            tagline="Receive live requests, manage active jobs, track commissions, and grow your garage profile."
             folder="provider"
+            audience="Garages & mechanics"
           />
         </div>
 
-        <div className="mt-14 rounded-2xl border border-white/10 bg-asphalt p-8">
-          <div className="flex items-center gap-2 text-brand">
-            <AndroidIcon className="h-5 w-5" />
-            <p className="font-medium text-chalk">How to install</p>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-white/10 bg-asphalt p-8">
+            <div className="flex items-center gap-2 text-brand">
+              <AndroidIcon className="h-5 w-5" />
+              <p className="font-medium text-chalk">How to install</p>
+            </div>
+            <ol className="mt-3 space-y-1.5 text-sm text-steel">
+              <li>1. Tap &quot;Download APK&quot; for the app you need</li>
+              <li>2. Open the file from your notifications or Downloads</li>
+              <li>3. Allow install from this source if Android asks</li>
+              <li>4. Tap Install and open the app</li>
+            </ol>
           </div>
-          <ol className="mt-3 space-y-1.5 text-sm text-steel">
-            <li>1. Tap "Download APK" above for the app you need</li>
-            <li>2. Open the downloaded file from your notifications</li>
-            <li>3. Allow install from this source if prompted</li>
-            <li>4. Tap Install</li>
-          </ol>
+
+          <div className="rounded-2xl border border-white/10 bg-asphalt p-8">
+            <p className="font-medium text-chalk">Which app do I need?</p>
+            <ul className="mt-3 space-y-2 text-sm text-steel">
+              <li>
+                <span className="font-medium text-chalk">Car Owner</span> — if
+                you drive and need roadside help or garage bookings.
+              </li>
+              <li>
+                <span className="font-medium text-chalk">Provider</span> — if you
+                run a garage or work as a mechanic and want to receive jobs.
+              </li>
+            </ul>
+            <p className="mt-4 text-xs text-steel/80">
+              Both apps talk to the same platform. Accounts and roles stay
+              separate so each side gets a focused experience.
+            </p>
+          </div>
         </div>
       </div>
     </section>

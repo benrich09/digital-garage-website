@@ -32,13 +32,17 @@ export function AppShowcase({
         }`}
       >
         <div className="flex-1">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-hazard">{eyebrow}</p>
-          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight">{title}</h2>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-hazard">
+            {eyebrow}
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight">
+            {title}
+          </h2>
           <p className="mt-4 max-w-md text-steel">{description}</p>
 
-          <ul className="mt-8 space-y-5">
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2">
             {features.map((f) => (
-              <li key={f.title} className="flex gap-4">
+              <li key={f.title} className="flex gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
                   {f.icon}
                 </div>
