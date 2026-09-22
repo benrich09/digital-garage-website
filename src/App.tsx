@@ -9,12 +9,12 @@ const PHONE_DISPLAY = "+255 746 795 020";
 const WHATSAPP = `https://wa.me/${PHONE}`;
 
 const providerTypes = [
-  { title: "Garages & mechanics", desc: "Full workshop services, diagnostics, repairs and scheduled maintenance." },
-  { title: "Breakdown / roadside", desc: "On-the-spot help when a vehicle fails — jump start, tow coordination, emergency fixes." },
-  { title: "Change tyre", desc: "Punctures, swaps and tyre fitting on the road or at a fixed location." },
-  { title: "Wheel alignment & balance", desc: "Alignment, balancing and related suspension/wheel services." },
-  { title: "Car wash", desc: "Exterior wash, interior clean and detailing providers near the customer." },
-  { title: "Spare parts shops", desc: "Parts retailers who supply genuine or compatible spares linked to jobs." },
+  { title: "Garages & mechanics", desc: "Full workshop services, diagnostics, repairs and scheduled maintenance.", image: "/services/garage.jpg" },
+  { title: "Breakdown / roadside", desc: "On-the-spot help when a vehicle fails — jump start, tow coordination, emergency fixes.", image: "/services/breakdown.jpg" },
+  { title: "Change tyre", desc: "Punctures, swaps and tyre fitting on the road or at a fixed location.", image: "/services/tyre.jpg" },
+  { title: "Wheel alignment & balance", desc: "Alignment, balancing and related suspension/wheel services.", image: "/services/alignment.jpg" },
+  { title: "Car wash", desc: "Exterior wash, interior clean and detailing providers near the customer.", image: "/services/car-wash.jpg" },
+  { title: "Spare parts shops", desc: "Parts retailers who supply genuine or compatible spares linked to jobs.", image: "/services/spare-parts.jpg" },
 ];
 
 const stepsOwner = [
@@ -106,14 +106,18 @@ function Navbar({ page, setPage, overHero }: { page: Page; setPage: (p: Page) =>
         </button>
       </div>
       {open && (
-        <div className={`space-y-1 border-t px-4 py-4 md:hidden ${solid ? "border-slate-100" : "border-white/20"}`}>
-          {link("home", "Home")}
-          {link("how", "How it works")}
-          {link("owners", "For owners")}
-          {link("providers", "For providers")}
-          <button onClick={() => { setPage("download"); setOpen(false); }} className="mt-2 w-full rounded-xl bg-green-600 py-3 text-sm font-semibold text-white">Get the app</button>
-          <button onClick={() => { setPage("register-owner"); setOpen(false); }} className="w-full rounded-xl bg-green-50 py-3 text-sm font-semibold text-green-700">Register as car owner</button>
-          <button onClick={() => { setPage("register-provider"); setOpen(false); }} className="w-full rounded-xl border border-green-200 py-3 text-sm font-semibold text-green-800">Register as provider</button>
+        <div className="md:hidden">
+          <div className={`space-y-1 border-t px-4 py-4 rounded-b-2xl backdrop-blur-xl ${
+            solid ? "border-slate-100 bg-white/95 shadow-lg" : "border-white/20 bg-slate-900/80 shadow-xl"
+          }`}>
+            {link("home", "Home")}
+            {link("how", "How it works")}
+            {link("owners", "For owners")}
+            {link("providers", "For providers")}
+            <button onClick={() => { setPage("download"); setOpen(false); }} className="mt-2 w-full rounded-xl bg-green-600 py-3 text-sm font-semibold text-white">Get the app</button>
+            <button onClick={() => { setPage("register-owner"); setOpen(false); }} className="w-full rounded-xl bg-green-50 py-3 text-sm font-semibold text-green-700">Register as car owner</button>
+            <button onClick={() => { setPage("register-provider"); setOpen(false); }} className="w-full rounded-xl border border-green-200 py-3 text-sm font-semibold text-green-800">Register as provider</button>
+          </div>
         </div>
       )}
     </header>
@@ -166,11 +170,16 @@ function Home({ setPage }: { setPage: (p: Page) => void }) {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-green-600">Services</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-slate-900">Provider types on Smart Garage</h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {providerTypes.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="font-display text-lg font-bold text-slate-900">{p.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
+              <div key={p.title} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-lg">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-bold text-slate-900">{p.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -303,11 +312,16 @@ function ProvidersPage({ setPage }: { setPage: (p: Page) => void }) {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-display text-2xl font-bold text-slate-900">Who can join as a provider?</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {providerTypes.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="font-display font-bold text-slate-900">{p.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
+              <div key={p.title} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-lg">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-slate-900">{p.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
