@@ -1,18 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 
-  --color-asphalt: #1c1917;
-  --color-asphalt-light: #2a2724;
-  --color-steel: #78716c;
-  --color-chalk: #fafaf9;
+  --color-slate-950: #0f172a;
+  --color-slate-900: #1e293b;
+  --color-slate-800: #334155;
+  --color-slate-700: #475569;
+  --color-slate-600: #64748b;
+  --color-slate-500: #94a3b8;
+  --color-slate-100: #f1f5f9;
+  --color-slate-50: #f8fafc;
+
   --color-brand: #16a34a;
   --color-brand-dark: #15803d;
-  --color-hazard: #fbbf24;
+  --color-brand-light: #22c55e;
+  --color-brand-soft: #dcfce7;
+  --color-accent: #f59e0b;
 }
 
 html {
@@ -20,29 +26,12 @@ html {
 }
 
 body {
-  background-color: var(--color-asphalt);
-  color: var(--color-chalk);
+  background-color: #f8fafc;
+  color: #1e293b;
   font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Diagonal hazard-stripe divider — the page's signature motif, echoing
-   reflective garage/workshop caution tape rather than a generic
-   gradient rule. */
-.hazard-stripe {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--color-hazard),
-    var(--color-hazard) 14px,
-    var(--color-asphalt) 14px,
-    var(--color-asphalt) 28px
-  );
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.font-display {
+  font-family: var(--font-display);
 }
